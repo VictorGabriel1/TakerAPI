@@ -19,10 +19,10 @@ class UploadImage(Resource):
         image_file = args['file']
         print('image_file')
         print(image_file)
-
+        image_file.save(f"images/inputs/nova.jpg")
         response = taker("images/inputs/nova.jpg", True)
         print(response)
-        image_file.save(f"images/inputs/nova.jpg")
+       
         return response
     #  response = roda_o_codigo()
     #  return response
