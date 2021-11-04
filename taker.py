@@ -7,20 +7,20 @@ def taker(var, debug):
     total=0
     i=0
 
-    #Leitura de uma determinada imagem 
+    #Leitura de uma determinada imagem
     img = cv2.imread(var)
     #Converte a imagem para tons de cinza
     imgbin = cv2.cvtColor(img , cv2.COLOR_BGR2GRAY)
     cv2.Canny(imgbin, 50,200)
     imgbin = np.array(255 * (imgbin / 255) ** 1 , dtype='uint8')
     if debug == True:
-        cv2.imwrite('images/Img_Greyscale.png',imgbin)
+        cv2.imwrite('images/inputs/Img_Greyscale.png',imgbin)
     #Converte a imagem de tons de cinza para preto e branco binário
     (thresh, imgbw) = cv2.threshold(imgbin, 127, 255, cv2.THRESH_BINARY)
     # Tratamentos de imagem ##############
     if debug == True:
-        cv2.imwrite('images/Img_BW.png',imgbw)
-    kernel = np.ones((8, 15), np.uint8)
+        cv2.imwrite('images/inputs/Img_BW.png',imgbw)
+    kernel = np.ones((3, 3), np.uint8)
     kernel2 = np.ones((3,3), np.uint8)
 
     imgbw = cv2.morphologyEx(imgbw, cv2.MORPH_OPEN, kernel)
@@ -28,7 +28,7 @@ def taker(var, debug):
     imgbw = cv2.dilate(imgbw,kernel2,iterations = 1)
     imgbw = cv2.erode(imgbw,kernel,iterations = 1)
     if debug == True:
-        cv2.imwrite('images/Img_Config.png',imgbw)
+        cv2.imwrite('images/inputs/Img_Config.png',imgbw)
 
     #Identifica os contornos de todos os objetos
     contours, hierarchy  = cv2.findContours(imgbw, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -46,9 +46,10 @@ def taker(var, debug):
     # Finally show the image
     dt = datetime.now()
     dts = dt.strftime("%d-%m-%Y_%H-%M-%S")
-    cv2.imwrite(f'images/{dts}.png', img)
+    cv2.imwrite(f'images/outputs/{dts}.png', img)
 
 
-    #Imprime os valores 
-    print('Total de objetos : ',total)
-    print('--------------------------------------------------------------------------')
+    #Imprime os valores
+    return {f'image': dts, 'total': total}
+    # print('Total de objetos : ',total)
+    # print('--------------------------------------------------------------------------')
