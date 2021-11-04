@@ -24,3 +24,14 @@ class UploadImage(Resource):
         print(response)
         image_file.save(f"images/inputs/nova.jpg")
         return response
+    #  response = roda_o_codigo()
+    #  return response
+    #  return {'image_url': 'kajdfhkajhfkshf.jpg', "total": 15}
+
+
+
+
+api.add_resource(UploadImage, '/')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0',debug=True)
