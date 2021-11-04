@@ -53,3 +53,5 @@ def taker(var, debug):
     return {f'image': dts, 'total': total}
     # print('Total de objetos : ',total)
     # print('--------------------------------------------------------------------------')
+
+    #waitress-serve --port=5000 --call api:create_app >> log.txt &
