@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import datetime
+from datetime import datetime
 #https://docs.opencv.org/master/d9/d8b/tutorial_py_contours_hierarchy.html
 
 def taker(var, debug):
@@ -44,7 +44,10 @@ def taker(var, debug):
             cv2.rectangle(img,(x,y),(x+w,y+h),(200,255,200),2)
 
     # Finally show the image
-    cv2.imwrite('images/saida.png',img)
+    dt = datetime.now()
+    dts = dt.strftime("%d-%m-%Y_%H-%M-%S")
+    cv2.imwrite(f'images/{dts}.png', img)
+
 
     #Imprime os valores 
     print('Total de objetos : ',total)
