@@ -12,7 +12,7 @@ def taker(var, debug):
     #Converte a imagem para tons de cinza
     imgbin = cv2.cvtColor(img , cv2.COLOR_BGR2GRAY)
     cv2.Canny(imgbin, 50,200)
-    imgbin = np.array(255 * (imgbin / 255) ** 1 , dtype='uint8')
+    imgbin = np.array(255 * (imgbin / 255) ** 0,75 , dtype='uint8')
     if debug == True:
         cv2.imwrite('images/inputs/Img_Greyscale.png',imgbin)
     #Converte a imagem de tons de cinza para preto e branco binário
