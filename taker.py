@@ -46,7 +46,7 @@ def taker(var, debug):
     # Finally show the image
     dt = datetime.now()
     dts = dt.strftime("%d-%m-%Y_%H-%M-%S")
-    cv2.imwrite(f'images/outputs/0.png', img)
+    cv2.imwrite(f'images/outputs/{dts}.png', img)
 
 
     #Imprime os valores
