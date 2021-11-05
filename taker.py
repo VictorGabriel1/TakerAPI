@@ -24,7 +24,7 @@ def taker(var, debug):
     kernel2 = np.ones((3,3), np.uint8)
 
     imgbw = cv2.morphologyEx(imgbw, cv2.MORPH_OPEN, kernel)
-    imgbw = cv2.morphologyEx(imgbw, cv2.MORPH_CLOSE, kernel)
+    imgbw = cv2.morphologyEx(imgbw, cv2.MORPH_CLOSE, kernel2)
     imgbw = cv2.dilate(imgbw,kernel2,iterations = 1)
     imgbw = cv2.erode(imgbw,kernel,iterations = 1)
     if debug == True:
