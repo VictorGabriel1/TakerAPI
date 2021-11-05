@@ -20,7 +20,7 @@ def taker(var, debug):
     # Tratamentos de imagem ##############
     if debug == True:
         cv2.imwrite('images/inputs/Img_BW.png',imgbw)
-    kernel = np.ones((3, 3), np.uint8)
+    kernel = np.ones((8, 15), np.uint8)
     kernel2 = np.ones((3,3), np.uint8)
 
     imgbw = cv2.morphologyEx(imgbw, cv2.MORPH_OPEN, kernel)
